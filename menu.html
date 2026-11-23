@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <title>Menu | NAM MIN</title>
+  <style>
+    :root {
+      --brown: #351900;
+      --brown-dark: #2b1400;
+      --gold: #e7a348;
+      --yellow: #fff000;
+      --cream: #fff8e9;
+      --text: #38200e;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--text);
+      background: var(--gold);
+    }
+    .navbar {
+      min-height: 76px;
+      background: var(--brown);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: clamp(28px, 6vw, 76px);
+      padding: 16px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .navbar a {
+      color: var(--yellow);
+      text-decoration: none;
+      font-size: clamp(18px, 2.2vw, 27px);
+      font-weight: bold;
+      transition: color .2s, transform .2s;
+    }
+    .navbar a:hover { color: white; transform: translateY(-2px); }
+    .menu-section {
+      padding: 54px 7% 72px;
+      min-height: calc(100vh - 124px);
+    }
+    .section-heading { text-align: center; margin: 0 auto 34px; }
+    .eyebrow {
+      display: inline-block;
+      background: var(--brown);
+      color: var(--yellow);
+      border-radius: 30px;
+      padding: 7px 18px;
+      font: bold 13px Arial, sans-serif;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    h1 {
+      color: var(--brown);
+      font-size: clamp(34px, 5vw, 48px);
+      margin: 14px 0 8px;
+    }
+    .section-heading p {
+      margin: 0;
+      font-size: 17px;
+      color: #56320f;
+    }
+    .menu-grid {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 26px;
+    }
+    .menu-card {
+      background: var(--cream);
+      border: 3px solid var(--brown);
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 8px 9px 0 var(--yellow);
+      transition: transform .25s, box-shadow .25s;
+    }
+    .menu-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 11px 13px 0 var(--yellow);
+    }
+    .menu-card img {
+      width: 100%;
+      height: 225px;
+      display: block;
+      object-fit: cover;
+    }
+    .card-content { padding: 19px 20px 21px; }
+    .menu-card h2 {
+      color: var(--brown);
+      font-size: 23px;
+      margin: 0 0 12px;
+    }
+    .ingredients-label {
+      font: bold 12px Arial, sans-serif;
+      letter-spacing: 1.2px;
+      color: #9a5b12;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .ingredients {
+      font: 14px/1.65 Arial, sans-serif;
+      color: #655344;
+      min-height: 92px;
+      margin: 0 0 18px;
+    }
+    .card-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      border-top: 1px dashed #c9a46f;
+      padding-top: 15px;
+    }
+    .price {
+      color: var(--brown);
+      font: bold 21px Arial, sans-serif;
+      white-space: nowrap;
+    }
+    .price small {
+      display: block;
+      color: #8c765f;
+      font-size: 11px;
+      font-weight: normal;
+      margin-bottom: 3px;
+    }
+    .order-link {
+    display: inline-block;
+    background-color: #351900;
+    color: #fff000;
+    text-decoration: none;
+    padding: 11px 18px;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 13px;
+    transition: 0.3s;
+}
+.order-link:hover {
+    background-color:  #fff000;
+    color: #351900;
+    transform: translateY(-2px);
+}
+.order-link:active {
+    background-color: #2b1400;
+    color: #fff8e9;
+    transform: scale(0.96);
+}
+  .footer {
+    background: var(--brown);
+    color: var(--yellow);
+    text-align: center;
+    padding: 15px 12px;
+    font-size: 21px;
+    font-weight: bold;
+}
+    @media (max-width: 850px) {
+      .menu-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 580px) {
+      .navbar { gap: 22px; min-height: 64px; }
+      .navbar a { font-size: 17px; }
+      .menu-section { padding: 38px 6% 55px; }
+      .menu-grid { grid-template-columns: 1fr; gap: 24px; max-width: 390px; }
+      .menu-card img { height: 235px; }
+      .ingredients { min-height: auto; }
+    }
+
+
+/* JUDUL KATEGORI MAKANAN */
+.category-heading {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin: 30px 0 25px;
+    padding: 0 5px 15px;
+    border-bottom: 2px solid rgba(53, 25, 0, 0.35);
+}
+
+.category-number {
+    color: #e7a348;
+    background: #351900;
+    font-size: 19px;
+    font-weight: bold;
+    padding: 12px 15px;
+    border-radius: 10px;
+}
+
+.category-info h2 {
+    color: #351900;
+    font-size: 28px;
+    margin: 0 0 5px;
+    font-family: Georgia, serif;
+}
+
+.category-info p {
+    color: #70451f;
+    font-size: 13px;
+    margin: 0;
+    font-style: italic;
+}
+
+.category-section {
+    margin-bottom: 45px;
+}
+
+/* MENYAMAKAN WARNA NAVBAR DAN FOOTER */
+
+.navbar {
+    background-color: #351900 !important;
+}
+
+.footer {
+    background-color: #351900 !important;
+    color: #ffff00;
+}
+.category-info p {
+    color:  #ffff00;
+    font-style: italic;
+}
+.section-heading p {
+    color: #ffff00;
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-weight: normal;
+}
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="INGAT LAGI.html">HOME</a>
+    <a href="menu.html">MENU</a>
+    <a href="kontak.html">LOKASI</a>
+  </nav>
+
+  <main class="menu-section" id="menu">
+    <header class="section-heading">
+      <span class="eyebrow">NAM MIN • Food, Drinks & More</span>
+      <h1>Menu Favorit Kami</h1>
+      <p>Hidangan lezat, dibuat dengan sepenuh hati untuk setiap kesempatan.</p>
+    </header>
+
+<div class="category-heading">
+
+    <div class="category-number">
+        01
+    </div>
+
+    <div class="category-info">
+        <h2>Makanan</h2>
+        <p>Hidangan istimewa untuk setiap kesempatan.</p>
+    </div>
+
+</div>
+
+    <div class="menu-grid">
+      <article class="menu-card">
+        <img src="images/rawon-nasi.jpg" alt="Rawon dengan nasi putih">
+        <div class="card-content">
+          <h2>Rawon + Nasi</h2>
+          <div class="ingredients-label">Ingredients</div>
+          <p class="ingredients">Nasi putih, potongan daging sapi, kuah hitam khas kluwek, bumbu rempah, tauge pendek, telur asin, jeruk nipis, sambal, dan kerupuk udang.</p>
+          <div class="card-bottom">
+            <div class="price"><small>Harga</small>Rp56.000</div>
+            <a class="order-link" href="https://gofood.link/a/RkMw1Mo" target="_blank" rel="noopener">Pesan Sekarang</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card">
+        <img src="images/soto-banjar.jpg" alt="Soto Banjar dengan lontong">
+        <div class="card-content">
+          <h2>Soto Banjar + Lontong</h2>
+          <div class="ingredients-label">Ingredients</div>
+          <p class="ingredients">Lontong, suwiran daging ayam kampung, kuah kaldu ayam berbumbu rempah, soun (bihun), perkedel kentang, dan telur ayam rebus.</p>
+          <div class="card-bottom">
+            <div class="price"><small>Harga</small>Rp47.200</div>
+            <a class="order-link" href="https://gofood.link/a/RkMw1Mo" target="_blank" rel="noopener">Pesan Sekarang</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card">
+        <img src="images/soto-lamongan.jpg" alt="Soto Lamongan dengan nasi">
+        <div class="card-content">
+          <h2>Soto Lamongan + Nasi</h2>
+          <div class="ingredients-label">Ingredients</div>
+          <p class="ingredients">Nasi putih, suwiran daging ayam kampung, kuah kuning kaldu ayam berbumbu rempah, soun (bihun), telur ayam rebus, irisan kol, koya, dan kerupuk udang.</p>
+          <div class="card-bottom">
+            <div class="price"><small>Harga</small>Rp47.200</div>
+            <a class="order-link" href="https://gofood.link/a/RkMw1Mo" target="_blank" rel="noopener">Pesan Sekarang</a>
+          </div>
+        </div>
+      </article> 
+<!-- MENU 4: NASI PECEL TELUR -->
+<article class="menu-card">
+    <img src="images/nasi-pecel-telur.jpg" alt="Nasi Pecel Telur">
+
+    <div class="card-content">
+        <h2>Nasi Pecel Telur</h2>
+        <div class="ingredients-label">Ingredients</div>
+
+        <p class="ingredients">
+            Nasi putih, sayur cambah dan bayam,
+            bumbu kacang yang pedas, tempe orek,
+            telur rebus, dan peyek.
+        </p>
+
+        <div class="card-bottom">
+            <div class="price">
+                <small>Harga</small>
+                Rp37.600
+            </div>
+
+            <a class="order-link"
+               href="https://gofood.link/a/RkMw1Mo"
+               target="_blank">
+                Pesan Sekarang
+            </a>
+        </div>
+    </div>
+</article>
+
+
+<!-- MENU 5: LONTONG SAYUR AYAM -->
+<article class="menu-card">
+    <img src="images/lontong-sayur-ayam.jpg" alt="Lontong Sayur Ayam">
+
+    <div class="card-content">
+        <h2>Lontong Sayur Ayam</h2>
+        <div class="ingredients-label">Ingredients</div>
+
+        <p class="ingredients">
+            Lontong, sayur santan dengan kentang
+            dan wortel, serta ayam.
+        </p>
+
+        <div class="card-bottom">
+            <div class="price">
+                <small>Harga</small>
+                Rp39.400
+            </div>
+
+            <a class="order-link"
+               href="https://gofood.link/a/RkMw1Mo"
+               target="_blank">
+                Pesan Sekarang
+            </a>
+        </div>
+    </div>
+</article>
+
+
+<!-- MENU 6: AYAM KREMES -->
+<article class="menu-card">
+    <img src="images/ayam-kremes.jpg" alt="Ayam Kremes">
+
+    <div class="card-content">
+        <h2>Ayam Kremes</h2>
+        <div class="ingredients-label">Ingredients</div>
+
+        <p class="ingredients">
+            Nasi putih, ayam ungkep goreng,
+            adonan kremes, lalapan selada,
+            kemangi, timun, dan sambal.
+        </p>
+
+        <div class="card-bottom">
+            <div class="price">
+                <small>Harga</small>
+                Rp47.200
+            </div>
+
+            <a class="order-link"
+               href="https://gofood.link/a/RkMw1Mo"
+               target="_blank">
+                Pesan Sekarang
+            </a>
+        </div>
+    </div>
+</article>
+
+
+<!-- MENU 7: MIE GORENG -->
+<article class="menu-card">
+    <img src="images/Mie goreng.png" alt="Mie Goreng">
+
+    <div class="card-content">
+        <h2>Mie Goreng</h2>
+        <div class="ingredients-label">Ingredients</div>
+        <p class="ingredients">
+            Mie goreng Indomie, sosis, sayur, dan telur ceplok.
+        </p>
+
+        <div class="card-bottom">
+            <div class="price">
+                <small>Harga</small>
+                Rp27.400
+            </div>
+            <a class="order-link" href="https://gofood.link/a/RkMw1Mo" target="_blank">
+                Pesan Sekarang
+            </a>
+        </div>
+    </div>
+</article>
+
+
+<!-- MENU 8: MIE KUAH -->
+<article class="menu-card">
+    <img src="images/mie kuah.png" alt="Mie Kuah">
+
+    <div class="card-content">
+        <h2>Mie Kuah</h2>
+        <div class="ingredients-label">Ingredients</div>
+        <p class="ingredients">
+            Mie Indomie kari ayam, sosis, sayur, dan telur rebus yang dimasak bersama mie.
+        </p>
+
+        <div class="card-bottom">
+            <div class="price">
+                <small>Harga</small>
+                Rp27.400
+            </div>
+            <a class="order-link" href="https://gofood.link/a/RkMw1Mo" target="_blank">
+                Pesan Sekarang
+            </a>
+        </div>
+    </div>
+</article>
+
+
+<!-- MENU 9: TELUR SETENGAH MATANG -->
+<article class="menu-card">
+    <img src="images/Telur setengah matang.png" alt="Telur Setengah Matang">
+
+    <div class="card-content">
+        <h2>Telur Setengah Matang</h2>
+        <div class="ingredients-label">Ingredients</div>
+        <p class="ingredients">
+            Telur ayam kampung.
+        </p>
+
+        <div class="card-bottom">
+            <div class="price">
+                <small>Harga</small>
+                Rp8.500
+            </div>
+            <a class="order-link" href="https://gofood.link/a/RkMw1Mo" target="_blank">
+                Pesan Sekarang
+            </a>
+        </div>
+    </div>
+</article>
+
+
+<!-- MENU 10: TELUR ASIN -->
+<article class="menu-card">
+    <img src="images/Telur asin.png" alt="Telur Asin">
+
+    <div class="card-content">
+        <h2>Telur Asin</h2>
+        <div class="ingredients-label">Ingredients</div>
+        <p class="ingredients">
+            Telur asin rebus.
+        </p>
+
+        <div class="card-bottom">
+            <div class="price">
+                <small>Harga</small>
+                Rp9.400
+            </div>
+            <a class="order-link" href="https://gofood.link/a/RkMw1Mo" target="_blank">
+                Pesan Sekarang
+            </a>
+        </div>
+    </div>
+</article>
+
+
+<!-- MENU 11: NASI PUTIH -->
+<article class="menu-card">
+    <img src="images/nasi.png" alt="Nasi Putih">
+
+    <div class="card-content">
+        <h2>Nasi Putih</h2>
+        <div class="ingredients-label">Ingredients</div>
+        <p class="ingredients">
+            1 porsi nasi putih.
+        </p>
+
+        <div class="card-bottom">
+            <div class="price">
+                <small>Harga</small>
+                Rp7.600
+            </div>
+            <a class="order-link" href="https://gofood.link/a/RkMw1Mo" target="_blank">
+                Pesan Sekarang
+            </a>
+        </div>
+    </div>
+</article>
+
+
+<!-- MENU 12: KERUPUK UDANG -->
+<article class="menu-card">
+    <img src="images/kerupuk.png" alt="Kerupuk Udang">
+
+    <div class="card-content">
+        <h2>Kerupuk Udang</h2>
+        <div class="ingredients-label">Ingredients</div>
+        <p class="ingredients">
+            Kerupuk udang.
+        </p>
+
+        <div class="card-bottom">
+            <div class="price">
+                <small>Harga</small>
+                Rp4.600
+            </div>
+            <a class="order-link" href="https://gofood.link/a/RkMw1Mo" target="_blank">
+                Pesan Sekarang
+            </a>
+        </div>
+    </div>
+</article>
+
+
+   </div>
+<!-- KATEGORI 02: ANEKA SNACK -->
+
+<!-- ================================= -->
+<!-- KATEGORI 02: ANEKA SNACK -->
+<!-- ================================= -->
+
+<div class="category-heading">
+    <div class="category-number">02</div>
+
+    <div class="category-info">
+        <h2>Aneka Snack</h2>
+        <p>Camilan lezat untuk menemani setiap momen.</p>
+    </div>
+</div>
+
+<div class="menu-grid">
+
+    <!-- 1. ROTI BAKAR 1 RASA -->
+    <article class="menu-card">
+        <img src="images/roti_bakar_1_rasa.png" alt="Roti Bakar 1 Rasa">
+
+        <div class="card-content">
+            <h2>Roti Bakar 1 Rasa</h2>
+            <div class="ingredients-label">Ingredients</div>
+            <p class="ingredients">
+                Roti bakar dengan 1 pilihan rasa.
+                (1 tangkup).
+            </p>
+
+            <div class="card-bottom">
+                <div class="price">
+                    <small>Harga</small>
+                    Rp22.600
+                </div>
+                <a class="order-link" href="#">
+                    Pesan Sekarang
+                </a>
+            </div>
+        </div>
+    </article>
+
+
+    <!-- 2. ROTI BAKAR 2 RASA -->
+    <article class="menu-card">
+        <img src="images/roti_bakar_2_rasa.png" alt="Roti Bakar 2 Rasa">
+
+        <div class="card-content">
+            <h2>Roti Bakar 2 Rasa</h2>
+            <div class="ingredients-label">Ingredients</div>
+            <p class="ingredients">
+                Roti bakar dengan 2 pilihan rasa.
+                (1 tangkup).
+            </p>
+
+            <div class="card-bottom">
+                <div class="price">
+                    <small>Harga</small>
+                    Rp23.800
+                </div>
+                <a class="order-link" href="#">
+                    Pesan Sekarang
+                </a>
+            </div>
+        </div>
+    </article>
+
+
+    <!-- 3. ROTI BAKAR BULAT 1 RASA -->
+    <article class="menu-card">
+        <img src="images/Chocolate-Filled Grilled Bread on a Plate.png" alt="Roti Bakar Bulat 1 Rasa">
+
+        <div class="card-content">
+            <h2>Roti Bakar Bulat 1 Rasa</h2>
+            <div class="ingredients-label">Ingredients</div>
+            <p class="ingredients">
+                Roti bakar berbentuk bulat dengan
+                1 pilihan rasa.
+            </p>
+
+            <div class="card-bottom">
+                <div class="price">
+                    <small>Harga</small>
+                    Rp14.200
+                </div>
+                <a class="order-link" href="#">
+                    Pesan Sekarang
+                </a>
+            </div>
+        </div>
+    </article>
+
+
+    <!-- 4. ROTI BAKAR BULAT 2 RASA -->
+    <article class="menu-card">
+        <img src="images/Golden Toasted Double-Filling Sandwich.png" alt="Roti Bakar Bulat 2 Rasa">
+
+        <div class="card-content">
+            <h2>Roti Bakar Bulat 2 Rasa</h2>
+            <div class="ingredients-label">Ingredients</div>
+            <p class="ingredients">
+                Roti bakar berbentuk bulat dengan
+                2 pilihan rasa.
+            </p>
+
+            <div class="card-bottom">
+                <div class="price">
+                    <small>Harga</small>
+                    Rp16.600
+                </div>
+                <a class="order-link" href="#">
+                    Pesan Sekarang
+                </a>
+            </div>
+        </div>
+    </article>
+
+
+    <!-- 5. ROTI GORENG TELUR -->
+    <article class="menu-card">
+        <img src="images/Crispy Grid-Cut Omelette on Rattan.png" alt="Roti Goreng Telur">
+
+        <div class="card-content">
+            <h2>Roti Goreng Telur</h2>
+            <div class="ingredients-label">Ingredients</div>
+            <p class="ingredients">
+                Roti goreng dengan telur.
+            </p>
+
+            <div class="card-bottom">
+                <div class="price">
+                    <small>Harga</small>
+                    Rp30.000
+                </div>
+                <a class="order-link" href="#">
+                    Pesan Sekarang
+                </a>
+            </div>
+        </div>
+    </article>
+
+
+    <!-- 6. SOSIS SOLO -->
+    <article class="menu-card">
+        <img src="images/Golden Crispy Roll with Green Chili.png" alt="Sosis Solo">
+
+        <div class="card-content">
+            <h2>Sosis Solo</h2>
+            <div class="ingredients-label">Ingredients</div>
+            <p class="ingredients">
+                Sosis Solo dengan isian gurih.
+            </p>
+
+            <div class="card-bottom">
+                <div class="price">
+                    <small>Harga</small>
+                    Rp11.800
+                </div>
+                <a class="order-link" href="#">
+                    Pesan Sekarang
+                </a>
+            </div>
+        </div>
+    </article>
+
+
+    <!-- 7. AREM-AREM -->
+    <article class="menu-card">
+        <img src="images/Banana Leaf-Wrapped Indonesian Snack.png" alt="Arem-Arem">
+
+        <div class="card-content">
+            <h2>Arem-Arem</h2>
+            <div class="ingredients-label">Ingredients</div>
+            <p class="ingredients">
+                Nasi gurih dan sambal goreng hati.
+            </p>
+
+            <div class="card-bottom">
+                <div class="price">
+                    <small>Harga</small>
+                    Rp10.600
+                </div>
+                <a class="order-link" href="#">
+                    Pesan Sekarang
+                </a>
+            </div>
+        </div>
+    </article>
+
+
+    <!-- 8. LEMPER AYAM -->
+    <article class="menu-card">
+        <img src="images/Banana Leaf Parcel on Rustic Plate.png" alt="Lemper Ayam">
+
+        <div class="card-content">
+            <h2>Lemper Ayam</h2>
+            <div class="ingredients-label">Ingredients</div>
+            <p class="ingredients">
+                Ketan dengan isian ayam.
+            </p>
+
+            <div class="card-bottom">
+                <div class="price">
+                    <small>Harga</small>
+                    Rp13.000
+                </div>
+                <a class="order-link" href="#">
+                    Pesan Sekarang
+                </a>
+            </div>
+        </div>
+    </article>
+
+
+    <!-- 9. OTE-OTE -->
+    <article class="menu-card">
+        <img src="images/Golden Shrimp Fritter with Green Chili.png" alt="Ote-Ote">
+
+        <div class="card-content">
+            <h2>Ote-Ote</h2>
+            <div class="ingredients-label">Ingredients</div>
+            <p class="ingredients">
+                Adonan sayur dengan topping udang.
+            </p>
+
+            <div class="card-bottom">
+                <div class="price">
+                    <small>Harga</small>
+                    Rp11.800
+                </div>
+                <a class="order-link" href="#">
+                    Pesan Sekarang
+                </a>
+            </div>
+        </div>
+    </article>
+
+
+    <!-- 10. LAPIS BERAS -->
+    <article class="menu-card">
+        <img src="images/Green Layered Dessert in Clear Container.png" alt="Lapis Beras">
+
+        <div class="card-content">
+            <h2>Lapis Beras</h2>
+            <div class="ingredients-label">Ingredients</div>
+            <p class="ingredients">
+                Kue lapis berbahan dasar tepung beras.
+            </p>
+
+            <div class="card-bottom">
+                <div class="price">
+                    <small>Harga</small>
+                    Rp11.800
+                </div>
+                <a class="order-link" href="#">
+                    Pesan Sekarang
+                </a>
+            </div>
+        </div>
+    </article>
+
+
+    <!-- 11. DADAR GULUNG -->
+    <article class="menu-card">
+        <img src="images/Vibrant Green Rolled Pancakes in Clamshell.png" alt="Dadar Gulung">
+
+        <div class="card-content">
+            <h2>Dadar Gulung</h2>
+            <div class="ingredients-label">Ingredients</div>
+            <p class="ingredients">
+                Kue dadar gulung dengan isian manis.
+            </p>
+
+            <div class="card-bottom">
+                <div class="price">
+                    <small>Harga</small>
+                    Rp10.600
+                </div>
+                <a class="order-link" href="#">
+                    Pesan Sekarang
+                </a>
+            </div>
+        </div>
+    </article>
+
+
+    <!-- 12. DIMSUM -->
+    <article class="menu-card">
+        <img src="images/Steamed Shumai with Chili Sauce.png" alt="Dimsum">
+
+        <div class="card-content">
+            <h2>Dimsum</h2>
+            <div class="ingredients-label">Ingredients</div>
+            <p class="ingredients">
+                Dimsum isi 6.
+            </p>
+
+            <div class="card-bottom">
+                <div class="price">
+                    <small>Harga</small>
+                    Rp25.000
+                </div>
+                <a class="order-link" href="#">
+                    Pesan Sekarang
+                </a>
+            </div>
+        </div>
+    </article>
+
+</div>
+<!-- AKHIR KATEGORI ANEKA SNACK -->
+
+</div>
+
+
+<!-- ================================= -->
+<!-- KATEGORI 03: MINUMAN -->
+<!-- ================================= -->
+
+<div class="category-heading">
+
+    <div class="category-number">03</div>
+
+    <div class="category-info">
+        <h2>Minuman</h2>
+        <p>Teman segar untuk menemani setiap momen.</p>
+    </div>
+
+</div>
+
+<div class="menu-grid">
+
+    <!-- 1. KOPI HITAM PANAS KECIL -->
+    <article class="menu-card">
+        <img src="images/Cozy Glass Coffee Still Life.png"
+             alt="Kopi Hitam Panas Kecil">
+
+        <div class="card-content">
+            <h2>Kopi Hitam Panas Kecil</h2>
+            <div class="ingredients-label">Ingredients</div>
+            <p class="ingredients">
+                Kopi hitam pilihan, air panas, dan gula.
+            </p>
+
+            <div class="card-bottom">
+                <div class="price">
+                    <small>Harga</small>
+                    Rp19.000
+                </div>
+                <a class="order-link"
+                   href="https://gofood.link/a/RkMw1Mo"
+                   target="_blank">
+                    Pesan Sekarang
+                </a>
+            </div>
+        </div>
+    </article>
+
+
+    <!-- 2. KOPI SUSU PANAS KECIL -->
+    <article class="menu-card">
+        <img src="images/Cozy Rooster Coffee Still Life.png"
+             alt="Kopi Susu Panas Kecil">
+
+        <div class="card-content">
+            <h2>Kopi Susu Panas Kecil</h2>
+            <div class="ingredients-label">Ingredients</div>
+            <p class="ingredients">
+                Kopi, susu, gula, dan air panas.
+            </p>
+
+            <div class="card-bottom">
+                <div class="price">
+                    <small>Harga</small>
+                    Rp27.400
+                </div>
+                <a class="order-link"
+                   href="https://gofood.link/a/RkMw1Mo"
+                   target="_blank">
+                    Pesan Sekarang
+                </a>
+            </div>
+        </div>
+    </article>
+
+
+    <!-- 3. ES KOPI SUSU -->
+    <article class="menu-card">
+        <img src="images/Iced Latte and Toast Café Scene.png"
+             alt="Es Kopi Susu">
+
+        <div class="card-content">
+            <h2>Es Kopi Susu</h2>
+            <div class="ingredients-label">Ingredients</div>
+            <p class="ingredients">
+                Kopi, susu, gula, dan es batu.
+            </p>
+
+            <div class="card-bottom">
+                <div class="price">
+                    <small>Harga</small>
+                    Rp35.800
+                </div>
+                <a class="order-link"
+                   href="https://gofood.link/a/RkMw1Mo"
+                   target="_blank">
+                    Pesan Sekarang
+                </a>
+            </div>
+        </div>
+    </article>
+
+
+    <!-- 4. ES TEH TARIK -->
+    <article class="menu-card">
+        <img src="images/Creamy Iced Café Refresher.png"
+             alt="Es Teh Tarik">
+
+        <div class="card-content">
+            <h2>Es Teh Tarik</h2>
+            <div class="ingredients-label">Ingredients</div>
+            <p class="ingredients">
+                Teh, susu, gula, dan es batu.
+            </p>
+
+            <div class="card-bottom">
+                <div class="price">
+                    <small>Harga</small>
+                    Rp35.800
+                </div>
+                <a class="order-link"
+                   href="https://gofood.link/a/RkMw1Mo"
+                   target="_blank">
+                    Pesan Sekarang
+                </a>
+            </div>
+        </div>
+    </article>
+
+
+    <!-- 5. ES TEH MANIS -->
+    <article class="menu-card">
+        <img src="images/Amber Iced Tea with Lemon and Greenery.png"
+             alt="Es Teh Manis">
+
+        <div class="card-content">
+            <h2>Es Teh Manis</h2>
+            <div class="ingredients-label">Ingredients</div>
+            <p class="ingredients">
+                Teh pilihan, gula, dan es batu.
+            </p>
+
+            <div class="card-bottom">
+                <div class="price">
+                    <small>Harga</small>
+                    Rp10.600
+                </div>
+                <a class="order-link"
+                   href="https://gofood.link/a/RkMw1Mo"
+                   target="_blank">
+                    Pesan Sekarang
+                </a>
+            </div>
+        </div>
+    </article>
+
+
+    <!-- 6. TEH PANAS MANIS -->
+    <article class="menu-card">
+        <img src="images/Steaming Amber Tea on Wood.png"
+             alt="Teh Panas Manis">
+
+        <div class="card-content">
+            <h2>Teh Panas Manis</h2>
+            <div class="ingredients-label">Ingredients</div>
+            <p class="ingredients">
+                Teh pilihan, gula, dan air panas.
+            </p>
+
+            <div class="card-bottom">
+                <div class="price">
+                    <small>Harga</small>
+                    Rp10.600
+                </div>
+                <a class="order-link"
+                   href="https://gofood.link/a/RkMw1Mo"
+                   target="_blank">
+                    Pesan Sekarang
+                </a>
+            </div>
+        </div>
+    </article>
+
+
+    <!-- 7. ES JERUK -->
+    <article class="menu-card">
+        <img src="images/Vibrant Citrus Juice Still Life.png"
+             alt="Es Jeruk">
+
+        <div class="card-content">
+            <h2>Es Jeruk</h2>
+            <div class="ingredients-label">Ingredients</div>
+            <p class="ingredients">
+                Perasan jeruk, air, gula, dan es batu.
+            </p>
+
+            <div class="card-bottom">
+                <div class="price">
+                    <small>Harga</small>
+                    Rp22.600
+                </div>
+                <a class="order-link"
+                   href="https://gofood.link/a/RkMw1Mo"
+                   target="_blank">
+                    Pesan Sekarang
+                </a>
+            </div>
+        </div>
+    </article>
+
+
+    <!-- 8. ES THAI TEA -->
+    <article class="menu-card">
+        <img src="images/Creamy Iced Thai Milk Tea Delight.png"
+             alt="Es Thai Tea">
+
+        <div class="card-content">
+            <h2>Es Thai Tea</h2>
+            <div class="ingredients-label">Ingredients</div>
+            <p class="ingredients">
+                Teh Thailand, susu, gula, dan es batu.
+            </p>
+
+            <div class="card-bottom">
+                <div class="price">
+                    <small>Harga</small>
+                    Rp35.800
+                </div>
+                <a class="order-link"
+                   href="https://gofood.link/a/RkMw1Mo"
+                   target="_blank">
+                    Pesan Sekarang
+                </a>
+            </div>
+        </div>
+    </article>
+
+</div>
+
+<!-- AKHIR KATEGORI MINUMAN -->
+
+
+  </main>
+
+  <footer class="footer">Good Food, Good Mood, See You Again</footer>
+</body>
+</html>
